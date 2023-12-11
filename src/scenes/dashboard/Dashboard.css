@@ -1,0 +1,23 @@
+.hover-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.images-div {
+    position: relative;
+    text-align: center;
+}
+
+.hover-image {
+    width: 40%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover-container:hover .hover-image {
+    transform: scale(1.2);
+}
+
+.text-center {
+    text-align: center;
+}

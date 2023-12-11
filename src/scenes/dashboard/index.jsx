@@ -2,8 +2,6 @@ import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import EmailIcon from "@mui/icons-material/Email";
-import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
@@ -12,6 +10,9 @@ import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import engine from '../../images/engine.png';
+import tyre from '../../images/tyre.png';
+import './Dashboard.css'
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -43,7 +44,7 @@ const Dashboard = () => {
       <Box
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="140px"
+        gridAutoRows="200px"
         gap="20px"
       >
         {/* ROW 1 */}
@@ -53,18 +54,16 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          className="hover-container"
         >
-          <StatBox
-            title="12,361"
-            subtitle="Emails Sent"
-            progress="0.75"
-            increase="+14%"
-            icon={
-              <EmailIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
+          <div className="hover-container images-div">
+            <img
+              src={engine}
+              alt="Your Alt Text"
+              className="hover-image"
+            />
+            <div className="hover-image text-center">Engine</div>
+          </div>
         </Box>
         <Box
           gridColumn="span 3"
@@ -72,18 +71,16 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          className="hover-container"
         >
-          <StatBox
-            title="431,225"
-            subtitle="Sales Obtained"
-            progress="0.50"
-            increase="+21%"
-            icon={
-              <PointOfSaleIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
+          <div className="hover-container images-div">
+            <img
+              src={engine}
+              alt="Your Alt Text"
+              className="hover-image"
+            />
+            <div className="hover-image text-center">Tyre</div>
+          </div>
         </Box>
         <Box
           gridColumn="span 3"
@@ -91,18 +88,16 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          className="hover-container"
         >
-          <StatBox
-            title="32,441"
-            subtitle="New Clients"
-            progress="0.30"
-            increase="+5%"
-            icon={
-              <PersonAddIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
+          <div className="hover-container images-div">
+            <img
+              src={engine}
+              alt="Your Alt Text"
+              className="hover-image"
+            />
+            <div className="hover-image text-center">Break</div>
+          </div>
         </Box>
         <Box
           gridColumn="span 3"
@@ -110,20 +105,17 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          className="hover-container"
         >
-          <StatBox
-            title="1,325,134"
-            subtitle="Traffic Received"
-            progress="0.80"
-            increase="+43%"
-            icon={
-              <TrafficIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
+          <div className="hover-container images-div">
+            <img
+              src={engine}
+              alt="Your Alt Text"
+              className="hover-image"
+            />
+            <div className="hover-image text-center">Clutch and Transmission</div>
+          </div>
         </Box>
-
         {/* ROW 2 */}
         <Box
           gridColumn="span 8"
