@@ -11,8 +11,11 @@ import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 import engine from '../../images/engine.png';
-import tyre from '../../images/tyre.png';
-import './Dashboard.css'
+import wheel from '../../images/wheel.png';
+import brake from '../../images/brake.png';
+import clutch from '../../images/clutch and transmission.png'
+import './Dashboard.css';
+import Car from "../../components/Car";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -22,7 +25,7 @@ const Dashboard = () => {
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Predictive Maintaince Analysis" subtitle="Know your vehicle health" />
+        <Header title="Predictive Maintenance Analysis" subtitle="Know your vehicle health" />
 
         <Box>
           <Button
@@ -75,11 +78,11 @@ const Dashboard = () => {
         >
           <div className="hover-container images-div">
             <img
-              src={engine}
+              src={wheel}
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="hover-image text-center">Tyre</div>
+            <div className="hover-image text-center">Wheel</div>
           </div>
         </Box>
         <Box
@@ -92,7 +95,7 @@ const Dashboard = () => {
         >
           <div className="hover-container images-div">
             <img
-              src={engine}
+              src={brake}
               alt="Your Alt Text"
               className="hover-image"
             />
@@ -109,11 +112,11 @@ const Dashboard = () => {
         >
           <div className="hover-container images-div">
             <img
-              src={engine}
+              src={clutch}
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="hover-image text-center">Clutch and Transmission</div>
+            <div className="hover-image text-center">Transmission</div>
           </div>
         </Box>
         {/* ROW 2 */}
@@ -121,8 +124,9 @@ const Dashboard = () => {
           gridColumn="span 8"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
+          className="center"
         >
-          <Box
+          {/* <Box
             mt="25px"
             p="0 30px"
             display="flex "
@@ -152,10 +156,11 @@ const Dashboard = () => {
                 />
               </IconButton>
             </Box>
-          </Box>
-          <Box height="250px" m="-20px 0 0 0">
+          </Box> */}
+          {/* <Box height="250px" m="-20px 0 0 0">
             <LineChart isDashboard={true} />
-          </Box>
+          </Box> */}
+          <Car/>
         </Box>
         <Box
           gridColumn="span 4"
