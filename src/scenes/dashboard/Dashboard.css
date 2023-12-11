@@ -21,8 +21,6 @@
 .text-center {
     position: absolute;
     margin-left: 20px;
-    /* left: 50%; */
-    /* transform: translateX(-50%); */
   }
   
 .image-text {
