@@ -1,6 +1,6 @@
 .hover-container {
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .images-div {
@@ -19,9 +19,17 @@
 }
 
 .text-center {
-    text-align: center;
+    position: absolute;
+    margin-left: 20px;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+  }
+  
+.image-text {
+    margin-top: 5px;
+    font-size: medium;
+    font-weight: 600;
 }
-
 .center {
     display: flex;
     justify-content: center;

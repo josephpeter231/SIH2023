@@ -10,7 +10,7 @@ import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
-import engine from '../../images/engine.png';
+import engine from '../../images/engine1.png';
 import wheel from '../../images/wheel.png';
 import brake from '../../images/brake.png';
 import clutch from '../../images/clutch and transmission.png'
@@ -47,7 +47,7 @@ const Dashboard = () => {
       <Box
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="200px"
+        gridAutoRows="190px"
         gap="20px"
       >
         {/* ROW 1 */}
@@ -65,7 +65,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="hover-image text-center">Engine</div>
+            <div className="text-center image-text">Engine</div>
           </div>
         </Box>
         <Box
@@ -82,7 +82,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="hover-image text-center">Wheel</div>
+            <div className="text-center image-text">Wheel</div>
           </div>
         </Box>
         <Box
@@ -99,7 +99,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="hover-image text-center">Break</div>
+            <div className="text-center image-text">Break</div>
           </div>
         </Box>
         <Box
@@ -116,7 +116,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="hover-image text-center">Transmission</div>
+            <div className="text-center image-text">Transmission</div>
           </div>
         </Box>
         {/* ROW 2 */}
