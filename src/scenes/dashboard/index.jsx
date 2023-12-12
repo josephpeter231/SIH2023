@@ -48,7 +48,7 @@ const Dashboard = () => {
       <Box
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="190px"
+        gridAutoRows="220px"
         gap="20px"
       >
         {/* ROW 1 */}
@@ -67,7 +67,7 @@ const Dashboard = () => {
               className="hover-image"
             />
             
-            <div><ProgressBar/></div>
+            <div className="progress text-center"><ProgressBar/></div>
             <div className="text-center image-text">Engine Health</div>
           </div>
         </Box>
@@ -85,9 +85,8 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <ProgressBar/>
+            <div className="progress text-center"><ProgressBar/></div>
             <div className="text-center image-text">Wheel</div>
-            
           </div>
         </Box>
         <Box
@@ -104,7 +103,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div><ProgressBar/></div>
+            <div className="progress text-center"><ProgressBar/></div>
             <div className="text-center image-text">Break</div>
           </div>
         </Box>
@@ -122,7 +121,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div><ProgressBar/></div>
+            <div className="progress text-center"><ProgressBar/></div>
             <div className="text-center image-text">Transmission</div>
           </div>
         </Box>

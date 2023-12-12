@@ -33,7 +33,7 @@
 }
 
 .image-text {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: medium;
     font-weight: 600;
 }
@@ -42,4 +42,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.progress {
+    position: relative;
+    margin-top: 5px;
 }
