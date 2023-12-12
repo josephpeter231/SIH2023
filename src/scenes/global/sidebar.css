@@ -1,0 +1,14 @@
+.tree-container{
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tree{
+    width: 100%;
+    padding: 10px 5px;
+    color: #fff;
+    background-color: #141B2D;
+}

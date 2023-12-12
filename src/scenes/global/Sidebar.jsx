@@ -17,6 +17,60 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import user from '../../images/user.png';
+import { DownOutlined } from "@ant-design/icons";
+import { Tree } from "antd";
+import './sidebar.css';
+
+const treeData = [
+  {
+    title: "Engine",
+    key: "0-0",
+    children: [
+      {
+        title: "Pistons",
+        key: "0-0-0",
+        children: [
+          {
+            title: "Piston-1",
+            key: "0-0-0-0",
+          },
+          {
+            title: "Piston-2",
+            key: "0-0-0-1",
+          },
+          {
+            title: "Piston-3",
+            key: "0-0-0-2",
+          },
+        ],
+      },
+      {
+        title: "parent 1-1",
+        key: "0-0-1",
+        children: [
+          {
+            title: "leaf",
+            key: "0-0-1-0",
+          },
+        ],
+      },
+      {
+        title: "parent 1-2",
+        key: "0-0-2",
+        children: [
+          {
+            title: "leaf",
+            key: "0-0-2-0",
+          },
+          {
+            title: "leaf",
+            key: "0-0-2-1",
+          },
+        ],
+      },
+    ],
+  },
+];
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -37,6 +91,12 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 };
 
 const Sidebar = () => {
+  // TREE STRUCTURE
+  const onSelect = (selectedKeys, info) => {
+    console.log("selected", selectedKeys, info);
+  };
+
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -90,7 +150,6 @@ const Sidebar = () => {
             )}
           </MenuItem>
 
-          {!isCollapsed && (
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
@@ -115,10 +174,17 @@ const Sidebar = () => {
                 </Typography>
               </Box>
             </Box>
-          )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Item
+          <Box className="tree-container" >
+              <Tree
+          className="tree"
+          showLine
+          switcherIcon={<DownOutlined />}
+          defaultExpandedKeys={["0-0-0"]}
+          onSelect={onSelect}
+          treeData={treeData}
+        />
+            {/* <Item
               title="Dashboard"
               to="/"
               icon={<HomeOutlinedIcon />}
@@ -218,7 +284,9 @@ const Sidebar = () => {
               icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
+
+
           </Box>
         </Menu>
       </ProSidebar>
