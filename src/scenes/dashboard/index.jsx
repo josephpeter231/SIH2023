@@ -16,6 +16,7 @@ import brake from '../../images/brake.png';
 import clutch from '../../images/clutch and transmission.png'
 import './Dashboard.css';
 import Car from "../../components/Car";
+import ProgressBar from "../bar/Progressbar";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -65,7 +66,9 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="text-center image-text">Engine</div>
+            
+            <div><ProgressBar/></div>
+            <div className="text-center image-text">Engine Health</div>
           </div>
         </Box>
         <Box
@@ -82,7 +85,9 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
+            <ProgressBar/>
             <div className="text-center image-text">Wheel</div>
+            
           </div>
         </Box>
         <Box
@@ -99,6 +104,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
+            <div><ProgressBar/></div>
             <div className="text-center image-text">Break</div>
           </div>
         </Box>
@@ -116,6 +122,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
+            <div><ProgressBar/></div>
             <div className="text-center image-text">Transmission</div>
           </div>
         </Box>
