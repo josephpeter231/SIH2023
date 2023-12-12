@@ -33,7 +33,7 @@ const ProgressBar = () => {
 
   return (
       <div style={{display:'flex'}}>
-      <div style={{ width: '50%', backgroundColor: 'rgb(214, 207, 207)', height: '10px', borderRadius: '10px', padding: '2px',marginTop:'10px',marginLeft:'40px' }}>
+      <div style={{ width: '50%', backgroundColor: 'rgb(214, 207, 207)', height: '10px', borderRadius: '10px', padding: '2px',marginTop:'10px',marginLeft:'55px' }}>
         <div style={{ height: '70%', backgroundColor: barColor, width: `${progress}%`, borderRadius: '10px', transition: 'all 0.5s',marginTop:'1px' }}> </div>
       </div>
       {/* <div style={{ color: 'white'}}>
