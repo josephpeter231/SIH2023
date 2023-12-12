@@ -22,6 +22,8 @@ const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  const colorsArray = ["#FF0000", "#CCCC00", "#008000", "#0000FF", "#000435", "#000435"];
+
   return (
     <Box m="20px" marginTop={0} className="home">
       {/* HEADER */}
@@ -66,8 +68,8 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            
-            <div className="progress text-center"><ProgressBar/></div>
+
+            <div className="progress text-center"><ProgressBar /></div>
             <div className="text-center image-text">Engine</div>
           </div>
         </Box>
@@ -85,7 +87,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="progress text-center"><ProgressBar/></div>
+            <div className="progress text-center"><ProgressBar /></div>
             <div className="text-center image-text">Wheel</div>
           </div>
         </Box>
@@ -103,7 +105,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="progress text-center"><ProgressBar/></div>
+            <div className="progress text-center"><ProgressBar /></div>
             <div className="text-center image-text">Break</div>
           </div>
         </Box>
@@ -121,7 +123,7 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="progress text-center"><ProgressBar/></div>
+            <div className="progress text-center"><ProgressBar /></div>
             <div className="text-center image-text">Transmission</div>
           </div>
         </Box>
@@ -132,7 +134,7 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
           className="center"
         >
-          <Car/>
+          <Car />
         </Box>
         <Box
           gridColumn="span 4"
@@ -140,18 +142,6 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
           overflow="auto"
         >
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
-            colors={colors.grey[100]}
-            p="15px"
-          >
-            <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Values
-            </Typography>
-          </Box>
           {mockTransactions.map((transaction, i) => (
             <Box
               key={`${transaction.txId}-${i}`}
@@ -161,25 +151,48 @@ const Dashboard = () => {
               borderBottom={`4px solid ${colors.primary[500]}`}
               p="15px"
             >
+              <Box
+                backgroundColor={colorsArray[i % colorsArray.length]}
+                p="5px 10px"
+                borderRadius="4px"
+              >
+                {transaction.field}
+              </Box>
               <Box>
                 <Typography
                   color={colors.greenAccent[500]}
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.txId}
+                  {transaction.hz}
                 </Typography>
                 <Typography color={colors.grey[100]}>
-                  {transaction.user}
+                  Hz
                 </Typography>
               </Box>
-              <Box color={colors.grey[100]}>{transaction.date}</Box>
-              <Box
-                backgroundColor={colors.greenAccent[500]}
-                p="5px 10px"
-                borderRadius="4px"
-              >
-                ${transaction.cost}
+              <Box>
+                <Typography
+                  color={colors.greenAccent[500]}
+                  variant="h5"
+                  fontWeight="600"
+                >
+                  {transaction.sensed_hz}
+                </Typography>
+                <Typography color={colors.grey[100]}>
+                  Sensed Hz
+                </Typography>
+              </Box>
+              <Box>
+                <Typography
+                  color={colors.greenAccent[500]}
+                  variant="h5"
+                  fontWeight="600"
+                >
+                  {transaction.amplitude}
+                </Typography>
+                <Typography color={colors.grey[100]}>
+                  Amplitude
+                </Typography>
               </Box>
             </Box>
           ))}
