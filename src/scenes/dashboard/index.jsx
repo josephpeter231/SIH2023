@@ -17,12 +17,34 @@ import clutch from '../../images/clutch and transmission.png'
 import './Dashboard.css';
 import Car from "../../components/Car";
 import ProgressBar from "../bar/Progressbar";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const colorsArray = ["#FF0000", "#CCCC00", "#008000", "#0000FF", "#000435", "#000435"];
+
+  const AnimatedNumber = ({ value }) => {
+    const [animatedValue, setAnimatedValue] = useState(0);
+  
+    useEffect(() => {
+      const step = (value - animatedValue) / 20; // Adjust the step for smoother animation
+  
+      const interval = setInterval(() => {
+        if (Math.abs(animatedValue - value) > Math.abs(step)) {
+          setAnimatedValue((prev) => prev + step);
+        } else {
+          setAnimatedValue(value);
+          clearInterval(interval);
+        }
+      }, 30); // Adjust the interval for the animation speed
+  
+      return () => clearInterval(interval);
+    }, [animatedValue, value]);
+  
+    return <span>{animatedValue.toFixed(2)}</span>; // Adjust the number of decimal places
+  };
 
   return (
     <Box m="20px" marginTop={0} className="home">
@@ -164,7 +186,7 @@ const Dashboard = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.hz}
+                  <AnimatedNumber value={transaction.hz} />
                 </Typography>
                 <Typography color={colors.grey[100]}>
                   Hz
@@ -176,7 +198,7 @@ const Dashboard = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.sensed_hz}
+                  <AnimatedNumber value={transaction.sensed_hz} />
                 </Typography>
                 <Typography color={colors.grey[100]}>
                   Sensed Hz
@@ -188,7 +210,7 @@ const Dashboard = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.amplitude}
+                  <AnimatedNumber value={transaction.amplitude} />
                 </Typography>
                 <Typography color={colors.grey[100]}>
                   Amplitude

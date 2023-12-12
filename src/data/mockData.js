@@ -292,15 +292,15 @@ export const mockTransactions = [
     field: "RR",
   },
   {
-    hz : 11.87,
-    sensed_hz : 13.57,
-    amplitude : 30,
+    hz : 100,
+    sensed_hz : 100,
+    amplitude : 0,
     field: "Wheel",
   },
   {
-    hz : 11.87,
-    sensed_hz : 13.57,
-    amplitude : 30,
+    hz : 23.27,
+    sensed_hz : 21.54,
+    amplitude : 24,
     field: "Engine",
   },
 ];
