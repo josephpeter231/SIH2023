@@ -23,7 +23,7 @@ const Dashboard = () => {
   const colors = tokens(theme.palette.mode);
 
   return (
-    <Box m="20px" className="home">
+    <Box m="20px" marginTop={0} className="home">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Predictive Maintenance Analysis" subtitle="Know your vehicle health" />
@@ -68,7 +68,7 @@ const Dashboard = () => {
             />
             
             <div className="progress text-center"><ProgressBar/></div>
-            <div className="text-center image-text">Engine Health</div>
+            <div className="text-center image-text">Engine</div>
           </div>
         </Box>
         <Box
@@ -132,40 +132,6 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
           className="center"
         >
-          {/* <Box
-            mt="25px"
-            p="0 30px"
-            display="flex "
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <Box>
-              <Typography
-                variant="h5"
-                fontWeight="600"
-                color={colors.grey[100]}
-              >
-                Revenue Generated
-              </Typography>
-              <Typography
-                variant="h3"
-                fontWeight="bold"
-                color={colors.greenAccent[500]}
-              >
-                $59,342.32
-              </Typography>
-            </Box>
-            <Box>
-              <IconButton>
-                <DownloadOutlinedIcon
-                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
-                />
-              </IconButton>
-            </Box>
-          </Box> */}
-          {/* <Box height="250px" m="-20px 0 0 0">
-            <LineChart isDashboard={true} />
-          </Box> */}
           <Car/>
         </Box>
         <Box
@@ -183,7 +149,7 @@ const Dashboard = () => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Recent Transactions
+              Values
             </Typography>
           </Box>
           {mockTransactions.map((transaction, i) => (
