@@ -1,24 +1,9 @@
-import { LineChart } from '@mui/x-charts';
-import React from 'react';
-import {time, goodBearing} from '../data/timeData';
+import React from "react";
+import { Line } from "react-chartjs-2";
+import { Chart as ChartJS } from "chart.js/auto";
 
-
-const LineCharts = () => {
-    const xData = time;
-    const yData = goodBearing;
-    return (
-        <div style={{ marginTop : '50px' }}>
-            <LineChart
-                width={350}
-                height={300}
-                series={[
-                    { data: xData, label: 'Time' },
-                    { data: yData, label: 'Good Bearing' },
-                ]}
-                xAxis={[{ scaleType: 'point', data: xData }]}
-            />
-        </div>
-    )
+function LineChart({ chartData }) {
+  return <Line data={chartData} options={chartData.options} style={{width:"100%", height:"100%"}} />;
 }
 
-export default LineCharts;
+export default LineChart;

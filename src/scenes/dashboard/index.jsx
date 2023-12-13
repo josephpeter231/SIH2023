@@ -21,8 +21,42 @@ import ProgressBar3 from "../bar/Progressbar3";
 import ProgressBar4 from "../bar/Progressbar4";
 import { useEffect, useState } from "react";
 import LineCharts from "../../components/LineChart";
+import LineChart from "../../components/LineChart";
+import { time } from '../../data/timeData';
 
 const Dashboard = () => {
+
+  const config = {
+    labels: time.map((data) => data.time),
+    datasets: [
+      {
+        label: "Users Gained",
+        data: time.map((data) => data.goodBearing),
+        backgroundColor: [
+          "rgba(75,192,192,1)",
+          "#ecf0f1",
+          "#50AF95",
+        ],
+        borderColor: "black",
+        borderWidth: 2,      
+        pointStyle: 'circle',
+        pointRadius: 0, 
+      },
+    ],
+    options : {
+      scales: {
+        y: {
+          min:-0.4,
+          max:0.4,
+          ticks: {
+            stepSize: 0.05,
+          },
+        },
+      },
+    }
+  };
+
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -30,10 +64,10 @@ const Dashboard = () => {
 
   const AnimatedNumber = ({ value }) => {
     const [animatedValue, setAnimatedValue] = useState(0);
-  
+
     useEffect(() => {
       const step = (value - animatedValue) / 20; // Adjust the step for smoother animation
-  
+
       const interval = setInterval(() => {
         if (Math.abs(animatedValue - value) > Math.abs(step)) {
           setAnimatedValue((prev) => prev + step);
@@ -42,10 +76,10 @@ const Dashboard = () => {
           clearInterval(interval);
         }
       }, 30); // Adjust the interval for the animation speed
-  
+
       return () => clearInterval(interval);
     }, [animatedValue, value]);
-  
+
     return <span>{animatedValue.toFixed(2)}</span>; // Adjust the number of decimal places
   };
 
@@ -267,7 +301,9 @@ const Dashboard = () => {
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box> */}
-          <LineCharts/>
+          <div style={{ width: 300 ,height:500}}>
+            <LineChart chartData={config} style={{ width: 300 ,height:500}} />
+          </div>
         </Box>
         <Box
           gridColumn="span 4"
