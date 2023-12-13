@@ -30,14 +30,12 @@ const Dashboard = () => {
     labels: time.map((data) => data.time),
     datasets: [
       {
-        label: "Users Gained",
+        label: "Hertz",
         data: time.map((data) => data.goodBearing),
         backgroundColor: [
           "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
         ],
-        borderColor: "black",
+        borderColor: "white",
         borderWidth: 2,      
         pointStyle: 'circle',
         pointRadius: 0, 
@@ -49,7 +47,7 @@ const Dashboard = () => {
           min:-0.4,
           max:0.4,
           ticks: {
-            stepSize: 0.05,
+            stepSize: 0.08,
           },
         },
       },
@@ -301,8 +299,8 @@ const Dashboard = () => {
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box> */}
-          <div style={{ width: 300 ,height:500}}>
-            <LineChart chartData={config} style={{ width: 300 ,height:500}} />
+          <div style={{ width: 300}}>
+            <LineChart chartData={config} style={{ width: 500 ,height:800}} />
           </div>
         </Box>
         <Box
@@ -332,7 +330,7 @@ const Dashboard = () => {
             fontWeight="600"
             sx={{ marginBottom: "15px" }}
           >
-            Geography Based Traffic
+            Geography Based
           </Typography>
           <Box height="200px">
             <GeographyChart isDashboard={true} />

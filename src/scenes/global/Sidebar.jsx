@@ -16,11 +16,12 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import user from '../../images/user.png';
 import { DownOutlined } from "@ant-design/icons";
 import { Tree } from "antd";
 import './sidebar.css';
-import { DescriptionOutlined } from "@mui/icons-material";
+import { DescriptionOutlined, LocalActivityOutlined, LocalHospitalOutlined } from "@mui/icons-material";
 
 const engineData = [
   {
@@ -197,7 +198,7 @@ const Sidebar = () => {
               <Tree
                 className={!isCollapsed ? 'tree' : 'tree hidden'}
                 showLine
-                switcherIcon={<DownOutlined />}
+                switcherIcon={<LocalHospitalIcon />}
                 defaultExpandedKeys={['0-0-0']}
                 onSelect={onSelect}
                 treeData={engineData}
@@ -208,7 +209,7 @@ const Sidebar = () => {
               <Tree
                 className={!isCollapsed ? 'tree' : 'tree hidden'}
                 showLine
-                switcherIcon={<DownOutlined />}
+                switcherIcon={<LocalHospitalIcon />}
                 defaultExpandedKeys={['0-0-0']}
                 onSelect={onSelect}
                 treeData={wheelData}
