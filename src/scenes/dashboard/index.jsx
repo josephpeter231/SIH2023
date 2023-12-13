@@ -20,6 +20,7 @@ import ProgressBar2 from "../bar/Progressbar2";
 import ProgressBar3 from "../bar/Progressbar3";
 import ProgressBar4 from "../bar/Progressbar4";
 import { useEffect, useState } from "react";
+import LineCharts from "../../components/LineChart";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -112,7 +113,7 @@ const Dashboard = () => {
               className="hover-image"
             />
             <div className="progress text-center"><ProgressBar2 /></div>
-            <div className="text-center image-text">Wheel</div>
+            <div className="text-center image-text">Wheel Assembly</div>
           </div>
         </Box>
         <Box
@@ -250,7 +251,7 @@ const Dashboard = () => {
           <Typography variant="h5" fontWeight="600">
             Campaign
           </Typography>
-          <Box
+          {/* <Box
             display="flex"
             flexDirection="column"
             alignItems="center"
@@ -265,7 +266,8 @@ const Dashboard = () => {
               $48,352 revenue generated
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
-          </Box>
+          </Box> */}
+          <LineCharts/>
         </Box>
         <Box
           gridColumn="span 4"

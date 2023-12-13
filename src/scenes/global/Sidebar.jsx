@@ -28,44 +28,30 @@ const engineData = [
     key: "0-0",
     children: [
       {
-        title: "Pistons",
+        title: "Crankshaft",
         key: "0-0-0",
         children: [
           {
-            title: "Piston-1",
+            title: "Bearing-1",
             key: "0-0-0-0",
           },
           {
-            title: "Piston-2",
+            title: "Bearing-2",
             key: "0-0-0-1",
-          },
-          {
-            title: "Piston-3",
-            key: "0-0-0-2",
           },
         ],
       },
       {
-        title: "parent 1-1",
+        title: "Camshaft",
         key: "0-0-1",
         children: [
           {
-            title: "leaf",
+            title: "Bearing-1",
             key: "0-0-1-0",
           },
-        ],
-      },
-      {
-        title: "parent 1-2",
-        key: "0-0-2",
-        children: [
           {
-            title: "leaf",
-            key: "0-0-2-0",
-          },
-          {
-            title: "leaf",
-            key: "0-0-2-1",
+            title: "Bearing-2",
+            key: "0-0-1-0",
           },
         ],
       },
@@ -76,50 +62,24 @@ const engineData = [
 
 const wheelData = [
   {
-    title: "Wheel",
+    title: "Transmission",
     key: "0-0",
     children: [
       {
-        title: "Pistons",
+        title: "Clutch",
         key: "0-0-0",
-        children: [
-          {
-            title: "Piston-1",
-            key: "0-0-0-0",
-          },
-          {
-            title: "Piston-2",
-            key: "0-0-0-1",
-          },
-          {
-            title: "Piston-3",
-            key: "0-0-0-2",
-          },
-        ],
       },
       {
-        title: "parent 1-1",
+        title: "Gear Box",
         key: "0-0-1",
-        children: [
-          {
-            title: "leaf",
-            key: "0-0-1-0",
-          },
-        ],
       },
       {
-        title: "parent 1-2",
+        title: "Propeller Shaft",
         key: "0-0-2",
-        children: [
-          {
-            title: "leaf",
-            key: "0-0-2-0",
-          },
-          {
-            title: "leaf",
-            key: "0-0-2-1",
-          },
-        ],
+      },
+      {
+        title: "Differential Gears",
+        key: "0-0-3",
       },
     ],
   },
@@ -141,6 +101,8 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     </MenuItem>
   );
 };
+
+
 
 const Sidebar = () => {
   // TREE STRUCTURE
@@ -230,27 +192,30 @@ const Sidebar = () => {
               </Typography>
             </Box>
           </Box>
-
-          <Box className="tree-container" >
-            <Tree
-              className={!isCollapsed ? "tree" : "tree hidden"}
-              showLine
-              switcherIcon={<DownOutlined />}
-              defaultExpandedKeys={["0-0-0"]}
-              onSelect={onSelect}
-              treeData={engineData}
-            />
-          </Box>
-          <Box className="tree-container" >
-            <Tree
-              className={!isCollapsed ? "tree" : "tree hidden"}
-              showLine
-              switcherIcon={<DownOutlined />}
-              defaultExpandedKeys={["0-0-0"]}
-              onSelect={onSelect}
-              treeData={wheelData}
-            />
-          </Box>
+          <div style={{ display: 'flex', margin : '20px', marginTop : '50px', flexDirection: 'column', backgroundColor : '#141b2d', borderRadius : 20 }}>
+            <Box className="tree-container" style={{ margin: 0, padding: 0 }}>
+              <Tree
+                className={!isCollapsed ? 'tree' : 'tree hidden'}
+                showLine
+                switcherIcon={<DownOutlined />}
+                defaultExpandedKeys={['0-0-0']}
+                onSelect={onSelect}
+                treeData={engineData}
+                style={{ margin: 0, padding: 0 }}
+              />
+            </Box>
+            <Box className="tree-container" style={{ margin: 0, padding: 0 }}>
+              <Tree
+                className={!isCollapsed ? 'tree' : 'tree hidden'}
+                showLine
+                switcherIcon={<DownOutlined />}
+                defaultExpandedKeys={['0-0-0']}
+                onSelect={onSelect}
+                treeData={wheelData}
+                style={{ margin: 0, padding: 0 }}
+              />
+            </Box>
+          </div>
         </Menu>
       </ProSidebar>
     </Box>
