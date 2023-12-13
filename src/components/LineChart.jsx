@@ -1,7 +1,7 @@
 import { LineChart } from '@mui/x-charts';
 import React from 'react';
-import {time} from '../data/timeData';
-import {goodBearing} from '../data/goodBearingData';
+import {time, goodBearing} from '../data/timeData';
+
 
 const LineCharts = () => {
     const xData = time;
