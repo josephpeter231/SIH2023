@@ -20,8 +20,9 @@ import user from '../../images/user.png';
 import { DownOutlined } from "@ant-design/icons";
 import { Tree } from "antd";
 import './sidebar.css';
+import { DescriptionOutlined } from "@mui/icons-material";
 
-const treeData = [
+const engineData = [
   {
     title: "Engine",
     key: "0-0",
@@ -72,6 +73,57 @@ const treeData = [
   },
 ];
 
+
+const wheelData = [
+  {
+    title: "Wheel",
+    key: "0-0",
+    children: [
+      {
+        title: "Pistons",
+        key: "0-0-0",
+        children: [
+          {
+            title: "Piston-1",
+            key: "0-0-0-0",
+          },
+          {
+            title: "Piston-2",
+            key: "0-0-0-1",
+          },
+          {
+            title: "Piston-3",
+            key: "0-0-0-2",
+          },
+        ],
+      },
+      {
+        title: "parent 1-1",
+        key: "0-0-1",
+        children: [
+          {
+            title: "leaf",
+            key: "0-0-1-0",
+          },
+        ],
+      },
+      {
+        title: "parent 1-2",
+        key: "0-0-2",
+        children: [
+          {
+            title: "leaf",
+            key: "0-0-2-0",
+          },
+          {
+            title: "leaf",
+            key: "0-0-2-1",
+          },
+        ],
+      },
+    ],
+  },
+];
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -122,8 +174,10 @@ const Sidebar = () => {
         },
       }}
     >
-      <ProSidebar collapsed={isCollapsed}>
-        <Menu iconShape="square">
+      <ProSidebar
+        collapsed={isCollapsed}>
+        <Menu iconShape="square"
+        >
           {/* LOGO AND MENU ICON */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -150,143 +204,52 @@ const Sidebar = () => {
             )}
           </MenuItem>
 
-            <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
-                <img
-                  alt="profile-user"
-                  width="100px"
-                  height="100px"
-                  src={user}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
-                />
-              </Box>
-              <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
-                  User
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Owner of car
-                </Typography>
-              </Box>
+          <Box
+            className={!isCollapsed ? "" : "hidden"}
+            mb="25px">
+            <Box display="flex" justifyContent="center" alignItems="center">
+              <img
+                alt="profile-user"
+                width="100px"
+                height="100px"
+                src={user}
+                style={{ cursor: "pointer", borderRadius: "50%" }}
+              />
             </Box>
+            <Box textAlign="center">
+              <Typography
+                variant="h2"
+                color={colors.grey[100]}
+                fontWeight="bold"
+                sx={{ m: "10px 0 0 0" }}
+              >
+                User
+              </Typography>
+              <Typography variant="h5" color={colors.greenAccent[500]}>
+                Owner of car
+              </Typography>
+            </Box>
+          </Box>
 
           <Box className="tree-container" >
-              <Tree
-          className="tree"
-          showLine
-          switcherIcon={<DownOutlined />}
-          defaultExpandedKeys={["0-0-0"]}
-          onSelect={onSelect}
-          treeData={treeData}
-        />
-            {/* <Item
-              title="Dashboard"
-              to="/"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
+            <Tree
+              className={!isCollapsed ? "tree" : "tree hidden"}
+              showLine
+              switcherIcon={<DownOutlined />}
+              defaultExpandedKeys={["0-0-0"]}
+              onSelect={onSelect}
+              treeData={engineData}
             />
-
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Data
-            </Typography>
-            <Item
-              title="Manage Team"
-              to="/team"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
+          </Box>
+          <Box className="tree-container" >
+            <Tree
+              className={!isCollapsed ? "tree" : "tree hidden"}
+              showLine
+              switcherIcon={<DownOutlined />}
+              defaultExpandedKeys={["0-0-0"]}
+              onSelect={onSelect}
+              treeData={wheelData}
             />
-            <Item
-              title="Contacts Information"
-              to="/contacts"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Invoices Balances"
-              to="/invoices"
-              icon={<ReceiptOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Pages
-            </Typography>
-            <Item
-              title="Profile Form"
-              to="/form"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Calendar"
-              to="/calendar"
-              icon={<CalendarTodayOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="FAQ Page"
-              to="/faq"
-              icon={<HelpOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Charts
-            </Typography>
-            <Item
-              title="Bar Chart"
-              to="/bar"
-              icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Pie Chart"
-              to="/pie"
-              icon={<PieChartOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Line Chart"
-              to="/line"
-              icon={<TimelineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Geography Chart"
-              to="/geography"
-              icon={<MapOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
-
-
           </Box>
         </Menu>
       </ProSidebar>
