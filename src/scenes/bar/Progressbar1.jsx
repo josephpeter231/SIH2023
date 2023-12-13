@@ -10,7 +10,7 @@ const ProgressBar = () => {
       cnt += 1;
       setProgress((prevProgress) => {
         const newProgress = prevProgress + 1;
-        return newProgress <= 90 ? newProgress : prevProgress;
+        return newProgress <= 70 ? newProgress : prevProgress;
       });
 
       if (cnt >= 100) clearInterval(intervalId);
@@ -25,7 +25,7 @@ const ProgressBar = () => {
   let barColor;
   if (progress <= 40) {
     barColor = 'rgb(255, 30, 30)'; // Red
-  } else if (progress <= 70) {
+  } else if (progress < 70) {
     barColor = 'rgb(255, 165, 0)'; // Orange
   } else {
     barColor = 'rgb(0, 128, 0)'; // Green
