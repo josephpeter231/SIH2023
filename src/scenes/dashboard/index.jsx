@@ -15,7 +15,10 @@ import brake from '../../images/brake.png';
 import clutch from '../../images/clutch and transmission.png'
 import './Dashboard.css';
 import Car from "../../components/Car";
-import ProgressBar from "../bar/Progressbar";
+import ProgressBar1 from "../bar/Progressbar1";
+import ProgressBar2 from "../bar/Progressbar2";
+import ProgressBar3 from "../bar/Progressbar3";
+import ProgressBar4 from "../bar/Progressbar4";
 import { useEffect, useState } from "react";
 
 const Dashboard = () => {
@@ -90,7 +93,7 @@ const Dashboard = () => {
               className="hover-image"
             />
 
-            <div className="progress text-center"><ProgressBar /></div>
+            <div className="progress text-center"><ProgressBar1 /></div>
             <div className="text-center image-text">Engine</div>
           </div>
         </Box>
@@ -108,26 +111,8 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="progress text-center"><ProgressBar /></div>
+            <div className="progress text-center"><ProgressBar2 /></div>
             <div className="text-center image-text">Wheel</div>
-          </div>
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          className="hover-container"
-        >
-          <div className="hover-container images-div">
-            <img
-              src={brake}
-              alt="Your Alt Text"
-              className="hover-image"
-            />
-            <div className="progress text-center"><ProgressBar /></div>
-            <div className="text-center image-text">Break</div>
           </div>
         </Box>
         <Box
@@ -144,10 +129,46 @@ const Dashboard = () => {
               alt="Your Alt Text"
               className="hover-image"
             />
-            <div className="progress text-center"><ProgressBar /></div>
+            <div className="progress text-center"><ProgressBar4 /></div>
             <div className="text-center image-text">Transmission</div>
           </div>
         </Box>
+        <Box
+          gridColumn="span 3"
+          backgroundColor={colors.primary[400]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          className="hover-container"
+        >
+          <div className="hover-container images-div">
+            <img
+              src={brake}
+              alt="Your Alt Text"
+              className="hover-image"
+            />
+            <div className="progress text-center"><ProgressBar3 /></div>
+            <div className="text-center image-text">Break</div>
+          </div>
+        </Box>
+        {/* <Box
+          gridColumn="span 3"
+          backgroundColor={colors.primary[400]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          className="hover-container"
+        >
+          <div className="hover-container images-div">
+            <img
+              src={clutch}
+              alt="Your Alt Text"
+              className="hover-image"
+            />
+            <div className="progress text-center"><ProgressBar4 /></div>
+            <div className="text-center image-text">Transmission</div>
+          </div>
+        </Box> */}
         {/* ROW 2 */}
         <Box
           gridColumn="span 8"
