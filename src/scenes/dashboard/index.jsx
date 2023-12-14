@@ -48,7 +48,7 @@ const Dashboard = () => {
           min:-0.4,
           max:0.4,
           ticks: {
-            stepSize: 0.08,
+            stepSize: 0.05,
           },
         },
       },
@@ -303,7 +303,7 @@ const Dashboard = () => {
 
         {/* ROW 3 */}
         <Box
-          gridColumn="span 4"
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           p="30px"
@@ -327,13 +327,12 @@ const Dashboard = () => {
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box> */}
-          <div style={{ width: 300}}>
-            {/* <LineChart chartData={config} style={{ width: 500 ,height:800}} /> */}
-            <ScatterCHart chartData={configPie} style={{ width: 500 ,height:800}}/>
+          <div style={{ width: 300 ,height:500}}>
+            <LineChart chartData={config} style={{ width: 300 ,height:500}} />
           </div>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
@@ -349,7 +348,24 @@ const Dashboard = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn="span 6"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+          padding="30px"
+        >
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={{ marginBottom: "15px" }}
+          >
+            Geography Based Traffic
+          </Typography>
+          <Box height="200px">
+            <GeographyChart isDashboard={true} />
+          </Box>
+        </Box>
+        <Box
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           padding="30px"
