@@ -54,6 +54,33 @@ const Dashboard = () => {
     }
   };
 
+  const configPie = {
+    labels: time.map((data) => data.time),
+    datasets: [
+      {
+        label: "Hertz",
+        data: time.map((data) => data.goodBearing),
+        backgroundColor: [
+          "rgba(75,192,192,1)",
+        ],
+        borderColor: "white",
+        borderWidth: 2,      
+        pointStyle: 'circle',
+        pointRadius: 0, 
+      },
+    ],
+    options : {
+      scales: {
+        y: {
+          min:-0.4,
+          max:0.4,
+          ticks: {
+            stepSize: 0.08,
+          },
+        },
+      },
+    }
+  };
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
