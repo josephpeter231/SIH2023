@@ -326,7 +326,7 @@ const Dashboard = () => {
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box> */}
-          <div style={{ width: 300 ,height:500}}>
+          <div >
             <LineChart chartData={config} style={{ width: 300 ,height:500}} />
           </div>
         </Box>
