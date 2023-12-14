@@ -37,7 +37,7 @@ const Dashboard = () => {
           "#ecf0f1",
           "#50AF95",
         ],
-        borderColor: "black",
+        borderColor: "white",
         borderWidth: 2,      
         pointStyle: 'circle',
         pointRadius: 0, 
@@ -45,13 +45,21 @@ const Dashboard = () => {
     ],
     options : {
       scales: {
-        y: {
-          min:-0.4,
-          max:0.4,
-          ticks: {
-            stepSize: 0.05,
-          },
-        },
+        // x: {
+        //   min:0,
+        //   max:0.2,
+        //   ticks: {
+        //     stepSize: 0.05,
+        //   },
+        // },
+
+        // y: {
+        //   min:-0.4,
+        //   max:0.4,
+        //   ticks: {
+        //     stepSize: 0.05,
+        //   },
+        // },
       },
     }
   };
@@ -277,7 +285,7 @@ const Dashboard = () => {
 
         {/* ROW 3 */}
         <Box
-          gridColumn="span 4"
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           p="30px"
@@ -285,28 +293,12 @@ const Dashboard = () => {
           <Typography variant="h5" fontWeight="600">
             Campaign
           </Typography>
-          {/* <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            mt="25px"
-          >
-            <ProgressCircle size="125" />
-            <Typography
-              variant="h5"
-              color={colors.greenAccent[500]}
-              sx={{ mt: "15px" }}
-            >
-              $48,352 revenue generated
-            </Typography>
-            <Typography>Includes extra misc expenditures and costs</Typography>
-          </Box> */}
-          <div style={{ width: 300 ,height:500}}>
-            <LineChart chartData={config} style={{ width: 300 ,height:500}} />
+          <div >
+            <LineChart chartData={config} style={{ width: 500 ,height:500}} />
           </div>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
@@ -322,7 +314,24 @@ const Dashboard = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn="span 6"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+          padding="30px"
+        >
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={{ marginBottom: "15px" }}
+          >
+            Geography Based Traffic
+          </Typography>
+          <Box height="200px">
+            <GeographyChart isDashboard={true} />
+          </Box>
+        </Box>
+        <Box
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           padding="30px"
