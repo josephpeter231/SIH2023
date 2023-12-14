@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import LineCharts from "../../components/LineChart";
 import LineChart from "../../components/LineChart";
 import { time } from '../../data/timeData';
+import ScatterCHart from "../../components/ScatterCHart";
 
 const Dashboard = () => {
 
