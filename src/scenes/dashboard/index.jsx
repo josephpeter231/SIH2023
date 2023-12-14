@@ -33,7 +33,7 @@ const Dashboard = () => {
     datasets: [
       {
         label: "Hertz",
-        data: dataList.map((data) => data.goodBearing),
+        data: dataList.map((data) => data.value),
         backgroundColor: [
           "rgba(75,192,192,1)",
         ],
@@ -282,7 +282,7 @@ const Dashboard = () => {
           p="30px"
         >
           <Typography variant="h5" fontWeight="600">
-            Campaign
+            Good Bearing
           </Typography>
           {/* <Box
             display="flex"
@@ -300,7 +300,7 @@ const Dashboard = () => {
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box> */}
-          <div >
+          <div style={{ marginTop : '50px'}}>
             <LineChart chartData={config} style={{ width: 300 ,height:500}} />
           </div>
         </Box>
