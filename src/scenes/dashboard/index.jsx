@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import LineCharts from "../../components/LineChart";
 import LineChart from "../../components/LineChart";
 import { time } from '../../data/timeData';
+import ScatterCHart from "../../components/ScatterCHart";
 
 const Dashboard = () => {
 
@@ -327,7 +328,8 @@ const Dashboard = () => {
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box> */}
           <div style={{ width: 300}}>
-            <LineChart chartData={config} style={{ width: 500 ,height:800}} />
+            {/* <LineChart chartData={config} style={{ width: 500 ,height:800}} /> */}
+            <ScatterCHart chartData={configPie} style={{ width: 500 ,height:800}}/>
           </div>
         </Box>
         <Box
