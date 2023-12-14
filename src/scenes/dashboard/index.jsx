@@ -22,17 +22,18 @@ import ProgressBar4 from "../bar/Progressbar4";
 import { useEffect, useState } from "react";
 import LineCharts from "../../components/LineChart";
 import LineChart from "../../components/LineChart";
-import { time } from '../../data/timeData';
+import dataList from '../../data/timeData';
+import LiveTimeSeriesChart from '../../components/TimeSeries';
 import ScatterCHart from "../../components/ScatterCHart";
 
 const Dashboard = () => {
 
   const config = {
-    labels: time.map((data) => data.time),
+    labels: dataList.map((data) => data.time),
     datasets: [
       {
         label: "Hertz",
-        data: time.map((data) => data.goodBearing),
+        data: dataList.map((data) => data.goodBearing),
         backgroundColor: [
           "rgba(75,192,192,1)",
         ],
@@ -49,34 +50,6 @@ const Dashboard = () => {
           max:0.4,
           ticks: {
             stepSize: 0.05,
-          },
-        },
-      },
-    }
-  };
-
-  const configPie = {
-    labels: time.map((data) => data.time),
-    datasets: [
-      {
-        label: "Hertz",
-        data: time.map((data) => data.goodBearing),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-        ],
-        borderColor: "white",
-        borderWidth: 2,      
-        pointStyle: 'circle',
-        pointRadius: 0, 
-      },
-    ],
-    options : {
-      scales: {
-        y: {
-          min:-0.4,
-          max:0.4,
-          ticks: {
-            stepSize: 0.08,
           },
         },
       },
