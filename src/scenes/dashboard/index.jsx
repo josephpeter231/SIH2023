@@ -30,12 +30,10 @@ const Dashboard = () => {
     labels: time.map((data) => data.time),
     datasets: [
       {
-        label: "Users Gained",
+        label: "Hertz",
         data: time.map((data) => data.goodBearing),
         backgroundColor: [
           "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
         ],
         borderColor: "white",
         borderWidth: 2,      
@@ -45,21 +43,13 @@ const Dashboard = () => {
     ],
     options : {
       scales: {
-        // x: {
-        //   min:0,
-        //   max:0.2,
-        //   ticks: {
-        //     stepSize: 0.05,
-        //   },
-        // },
-
-        // y: {
-        //   min:-0.4,
-        //   max:0.4,
-        //   ticks: {
-        //     stepSize: 0.05,
-        //   },
-        // },
+        y: {
+          min:-0.4,
+          max:0.4,
+          ticks: {
+            stepSize: 0.05,
+          },
+        },
       },
     }
   };
@@ -293,8 +283,24 @@ const Dashboard = () => {
           <Typography variant="h5" fontWeight="600">
             Campaign
           </Typography>
-          <div >
-            <LineChart chartData={config} style={{ width: 500 ,height:500}} />
+          {/* <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            mt="25px"
+          >
+            <ProgressCircle size="125" />
+            <Typography
+              variant="h5"
+              color={colors.greenAccent[500]}
+              sx={{ mt: "15px" }}
+            >
+              $48,352 revenue generated
+            </Typography>
+            <Typography>Includes extra misc expenditures and costs</Typography>
+          </Box> */}
+          <div style={{ width: 300 ,height:500}}>
+            <LineChart chartData={config} style={{ width: 300 ,height:500}} />
           </div>
         </Box>
         <Box
@@ -341,7 +347,7 @@ const Dashboard = () => {
             fontWeight="600"
             sx={{ marginBottom: "15px" }}
           >
-            Geography Based Traffic
+            Geography Based
           </Typography>
           <Box height="200px">
             <GeographyChart isDashboard={true} />
