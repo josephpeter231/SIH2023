@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
@@ -22,32 +23,117 @@ import ProgressBar4 from "../bar/Progressbar4";
 import { useEffect, useState } from "react";
 import LineCharts from "../../components/LineChart";
 import LineChart from "../../components/LineChart";
-import dataList from '../../data/timeData';
+import dataList from '../../data/goodBearing';
+import fault from "../../data/faultBearing";
+import rubbing from "../../data/rubbing";
+import fftGoodBearing from "../../data/fftGoodBearing";
+import fftFaultBearing from "../../data/fftFaultBearing";
+import fftRubbing from "../../data/fftRubbing";
 import LiveTimeSeriesChart from '../../components/TimeSeries';
-import ScatterCHart from "../../components/ScatterCHart";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import _ from 'lodash';
 
-const Dashboard = () => {
+const Dashboard = React.memo(() => {
 
+  const [timeSeries, setTimeSeries] = useState("Good Bearing");
+
+  const handleChange = (event) => {
+    setTimeSeries(event.target.value);
+  };
+
+  const [fft, setFft] = useState("Good Bearing");
+
+  const handleFFT = (event) => {
+    setFft(event.target.value);
+  };
+
+  const [goodBearingData, setGoodData] = useState([]);
+  const [faultBearingData, setFaultData] = useState([]);
+  const [rubbingData, setRubbingData] = useState([]);
+  const [fftGoodBearingData, setfftGoodBearingData] = useState([]);
+  const [fftFaultBearingData, setfftFaultBearingData] = useState([]);
+  const [fftRrubbingData, setfftRubbingData] = useState([]);
+
+  useEffect(() => {
+    const downsampled = _.chunk(dataList, Math.ceil(dataList.length / 10000))
+      .map(chunk => ({
+        time: _.meanBy(chunk, point => point.time),
+        value: _.meanBy(chunk, point => point.value),
+      }));
+
+    setGoodData(downsampled);
+  }, []);
+
+  useEffect(() => {
+    const downsampled = _.chunk(fault, Math.ceil(fault.length / 10000))
+      .map(chunk => ({
+        time: _.meanBy(chunk, point => point.time),
+        value: _.meanBy(chunk, point => point.value),
+      }));
+
+    setFaultData(downsampled);
+  }, []);
+
+  useEffect(() => {
+    const downsampled = _.chunk(rubbing, Math.ceil(rubbing.length / 10000))
+      .map(chunk => ({
+        time: _.meanBy(chunk, point => point.time),
+        value: _.meanBy(chunk, point => point.value),
+      }));
+
+    setRubbingData(downsampled);
+  }, []);
+
+  useEffect(() => {
+    const downsampled = _.chunk(fftGoodBearing, Math.ceil(fftGoodBearing.length / 40000))
+      .map(chunk => ({
+        time: _.meanBy(chunk, point => point.time),
+        value: _.meanBy(chunk, point => point.value),
+      }));
+
+    setfftGoodBearingData(downsampled);
+  }, []);
+  useEffect(() => {
+    const downsampled = _.chunk(fftFaultBearing, Math.ceil(fftFaultBearing.length / 40000))
+      .map(chunk => ({
+        time: _.meanBy(chunk, point => point.time),
+        value: _.meanBy(chunk, point => point.value),
+      }));
+
+    setfftFaultBearingData(downsampled);
+  }, []);
+  useEffect(() => {
+    const downsampled = _.chunk(fftRubbing, Math.ceil(fftRubbing.length / 40000))
+      .map(chunk => ({
+        time: _.meanBy(chunk, point => point.time),
+        value: _.meanBy(chunk, point => point.value),
+      }));
+
+    setfftRubbingData(downsampled);
+  }, []);
   const config = {
-    labels: dataList.map((data) => data.time),
+    labels: timeSeries === 'Good Bearing'? goodBearingData.map((data) => data.time) : timeSeries==="Fault Bearing" ? faultBearingData.map((data) => data.time) : rubbingData.map((data) => data.time),
     datasets: [
       {
         label: "Hertz",
-        data: dataList.map((data) => data.value),
+        data: timeSeries === 'Good Bearing'? goodBearingData.map((data) => data.value) : timeSeries==="Fault Bearing" ? faultBearingData.map((data) => data.value) : rubbingData.map((data) => data.value),
         backgroundColor: [
           "rgba(75,192,192,1)",
         ],
         borderColor: "white",
-        borderWidth: 2,      
+        borderWidth: 2,
         pointStyle: 'circle',
-        pointRadius: 0, 
+        pointRadius: 0,
       },
     ],
-    options : {
+    options: {
       scales: {
         y: {
-          min:-0.4,
-          max:0.4,
+          min: -0.4,
+          max: 0.4,
           ticks: {
             stepSize: 0.05,
           },
@@ -55,6 +141,39 @@ const Dashboard = () => {
       },
     }
   };
+
+  
+  const configFft = {
+    labels: fft === 'Good Bearing'? fftGoodBearingData.map((data) => data.time) : fft === "Fault Bearing" ? fftFaultBearingData.map((data) => data.time) : fftRrubbingData.map((data) => data.time),
+    datasets: [
+      {
+        label: "Hertz",
+        data: fft === 'Good Bearing'? fftGoodBearingData.map((data) => data.value) : fft === "Fault Bearing" ? fftFaultBearingData.map((data) => data.value) : fftRrubbingData.map((data) => data.value),
+        backgroundColor: [
+          "rgba(75,192,192,1)",
+        ],
+        borderColor: "white",
+        borderWidth: 2,
+        pointStyle: 'circle',
+        pointRadius: 0,
+      },
+    ],
+    options: {
+      scales: {
+        y: {
+          min: -0.4,
+          max: 0.4,
+          ticks: {
+            stepSize: 0.05,
+          },
+        },
+      },
+    }
+  };
+
+
+
+
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -281,82 +400,115 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
           p="30px"
         >
-          <Typography variant="h5" fontWeight="600">
-            Good Bearing
-          </Typography>
-          {/* <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            mt="25px"
-          >
-            <ProgressCircle size="125" />
-            <Typography
-              variant="h5"
-              color={colors.greenAccent[500]}
-              sx={{ mt: "15px" }}
-            >
-              $48,352 revenue generated
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <Typography variant="h5" fontWeight="600">
+              Time Series Analysis
             </Typography>
-            <Typography>Includes extra misc expenditures and costs</Typography>
-          </Box> */}
-          <div style={{ marginTop : '50px'}}>
-            <LineChart chartData={config} style={{ width: 300 ,height:500}} />
+            <Select
+              value={timeSeries}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+              sx={{ marginTop: '1rem' }}
+            >
+              <MenuItem value="Good Bearing">
+                Good Bearing
+              </MenuItem>
+              <MenuItem value="Fault Bearing">Fault Bearing</MenuItem>
+              <MenuItem value="Rubbing">Rubbing</MenuItem>
+            </Select>
+          </FormControl>
+          <div style={{ marginTop: '20px' }}>
+            <LineChart chartData={config} style={{ width: 300, height: 500 }} />
           </div>
         </Box>
         <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
+          p="30px"
         >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ padding: "30px 30px 0 30px" }}
-          >
-            Sales Quantity
-          </Typography>
-          <Box height="250px" mt="-20px">
-            <BarChart isDashboard={true} />
-          </Box>
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <Typography variant="h5" fontWeight="600">
+              FFT Analysis
+            </Typography>
+            <Select
+              value={fft}
+              onChange={handleFFT}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+              sx={{ marginTop: '1rem' }}
+            >
+              <MenuItem value="Good Bearing">
+                Good Bearing
+              </MenuItem>
+              <MenuItem value="Fault Bearing">Fault Bearing</MenuItem>
+              <MenuItem value="Rubbing">Rubbing</MenuItem>
+            </Select>
+          </FormControl>
+          <div style={{ marginTop: '20px' }}>
+            <LineChart chartData={configFft} style={{ width: 300, height: 500 }} />
+          </div>
         </Box>
         <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
-          padding="30px"
+          p="30px"
         >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ marginBottom: "15px" }}
-          >
-            Geography Based Traffic
-          </Typography>
-          <Box height="200px">
-            <GeographyChart isDashboard={true} />
-          </Box>
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <Typography variant="h5" fontWeight="600">
+              Scatter Plot
+            </Typography>
+            <Select
+              value={timeSeries}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+              sx={{ marginTop: '1rem' }}
+            >
+              <MenuItem value="Good Bearing">
+                Good Bearing
+              </MenuItem>
+              <MenuItem value="Fault Bearing">Fault Bearing</MenuItem>
+              <MenuItem value="Rubbing">Rubbing</MenuItem>
+            </Select>
+          </FormControl>
+          <div style={{ marginTop: '20px' }}>
+            <LineChart chartData={config} style={{ width: 300, height: 500 }} />
+          </div>
         </Box>
         <Box
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
-          padding="30px"
+          p="30px"
         >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ marginBottom: "15px" }}
-          >
-            Geography Based
-          </Typography>
-          <Box height="200px">
-            <GeographyChart isDashboard={true} />
-          </Box>
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <Typography variant="h5" fontWeight="600">
+              Recurrence
+            </Typography>
+            <Select
+              value={timeSeries}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+              sx={{ marginTop: '1rem' }}
+            >
+              <MenuItem value="Good Bearing">
+                Good Bearing
+              </MenuItem>
+              <MenuItem value="Fault Bearing">Fault Bearing</MenuItem>
+              <MenuItem value="Rubbing">Rubbing</MenuItem>
+            </Select>
+          </FormControl>
+          <div style={{ marginTop: '20px' }}>
+            <LineChart chartData={config} style={{ width: 300, height: 500 }} />
+          </div>
         </Box>
       </Box>
     </Box>
   );
-};
+});
 
 export default Dashboard;
