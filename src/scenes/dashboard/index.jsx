@@ -20,19 +20,19 @@ import ProgressBar2 from "../bar/Progressbar2";
 import ProgressBar3 from "../bar/Progressbar3";
 import ProgressBar4 from "../bar/Progressbar4";
 import { useEffect, useState } from "react";
-import LineCharts from "../../components/LineChart";
 import LineChart from "../../components/LineChart";
-import { time } from '../../data/timeData';
-import ScatterCHart from "../../components/ScatterCHart";
+import data from '../../data/timeData';
+import {time} from '../../data/scatterData'
+import ScatterChart from "../../components/ScatterChart";
 
 const Dashboard = () => {
 
   const config = {
-    labels: time.map((data) => data.time),
+    labels: data.map((data) => data.time),
     datasets: [
       {
         label: "Hertz",
-        data: time.map((data) => data.goodBearing),
+        data: data.map((data) => data.goodBearing),
         backgroundColor: [
           "rgba(75,192,192,1)",
         ],
@@ -55,33 +55,41 @@ const Dashboard = () => {
     }
   };
 
-  const configPie = {
-    labels: time.map((data) => data.time),
+  // const [data, setData] = useState([]);
+  // setData(time);
+  // console.log(data)
+
+  // useEffect(() => {
+  //   asyncFetch();
+  // }, []);
+
+  // const asyncFetch = () => {
+  //   fetch(time)
+  //     .then((response) => response.json())
+  //     .then((json) => setData(json))
+  //     .catch((error) => {
+  //       console.log('fetch data failed', error);
+  //     });
+  // };
+
+  const configPie={
+    type: 'scatter',
     datasets: [
-      {
-        label: "Hertz",
-        data: time.map((data) => data.goodBearing),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-        ],
-        borderColor: "white",
-        borderWidth: 2,      
-        pointStyle: 'circle',
-        pointRadius: 0, 
-      },
+      {label : 'Scatter plot',
+    data: time,
+    backgroundColor:'rgba(75, 192, 192, 1)',
+    pointRadius:3
+  }
     ],
-    options : {
+    options: {
       scales: {
-        y: {
-          min:-0.4,
-          max:0.4,
-          ticks: {
-            stepSize: 0.08,
-          },
-        },
-      },
+        x: {
+          type: 'linear',
+          position: 'bottom'
+        }
+      }
     }
-  };
+  }
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -327,8 +335,9 @@ const Dashboard = () => {
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box> */}
-          <div style={{ width: 300 ,height:500}}>
-            <LineChart chartData={config} style={{ width: 300 ,height:500}} />
+          <div className="plot-contaianer">
+            {/* <LineChart chartData={config} style={{ width: 300 ,height:500}} /> */}
+            <ScatterChart chartData={configPie}/>
           </div>
         </Box>
         <Box

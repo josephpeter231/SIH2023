@@ -6,11 +6,8 @@ const timeData = [
 console.log(goodBearingData.length);
 console.log(timeData.length);
 
-const time = timeData.map((time, index) => ({
+export const time = timeData.map((time, index) => ({
     time,
     goodBearing: goodBearingData[index],
 }));
 
-const data = time.slice(0,99)
-
-export default data;

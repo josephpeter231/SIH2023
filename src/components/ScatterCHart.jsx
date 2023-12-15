@@ -1,10 +1,10 @@
 import React from 'react'
 import { Scatter } from 'react-chartjs-2'
-
-const ScatterCHart = ({chartData}) => {
+const ScatterChart = ({chartData}) => {
+    console.log(chartData)
   return (
-    <Scatter data={chartData.data} options={chartData.options} style={{width:"100%",height:"100%"}}/>
+    <Scatter data={chartData}/>
   )
 }
 
-export default ScatterCHart
+export default ScatterChart
