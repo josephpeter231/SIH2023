@@ -35,13 +35,21 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import _ from 'lodash';
+import GoodScatter from "../../components/ScatterPlot";
+import FaultScatter from "../../components/FaultScatter";
+import RubbingScatter from "../../components/RubbingScatter";
 
 const Dashboard = React.memo(() => {
 
   const [timeSeries, setTimeSeries] = useState("Good Bearing");
+  const [scatterPlot, setscatterPlot] = useState("Good Bearing");
 
   const handleChange = (event) => {
     setTimeSeries(event.target.value);
+  };
+
+  const handleScatter = (event) => {
+    setscatterPlot(event.target.value);
   };
 
   const [fft, setFft] = useState("Good Bearing");
@@ -123,7 +131,7 @@ const Dashboard = React.memo(() => {
         backgroundColor: [
           "rgba(75,192,192,1)",
         ],
-        borderColor: "white",
+        borderColor: "rgba(75,192,192,1)",
         borderWidth: 2,
         pointStyle: 'circle',
         pointRadius: 0,
@@ -152,7 +160,7 @@ const Dashboard = React.memo(() => {
         backgroundColor: [
           "rgba(75,192,192,1)",
         ],
-        borderColor: "white",
+        borderColor: "rgba(75,192,192,1)",
         borderWidth: 2,
         pointStyle: 'circle',
         pointRadius: 0,
@@ -461,8 +469,8 @@ const Dashboard = React.memo(() => {
               Scatter Plot
             </Typography>
             <Select
-              value={timeSeries}
-              onChange={handleChange}
+              value={scatterPlot}
+              onChange={handleScatter}
               displayEmpty
               inputProps={{ 'aria-label': 'Without label' }}
               sx={{ marginTop: '1rem' }}
@@ -474,8 +482,10 @@ const Dashboard = React.memo(() => {
               <MenuItem value="Rubbing">Rubbing</MenuItem>
             </Select>
           </FormControl>
-          <div style={{ marginTop: '20px' }}>
-            <LineChart chartData={config} style={{ width: 300, height: 500 }} />
+          <div style={{display:'flex',justifyContent:'center',alignItems:'center', marginTop: '20px' }}>
+            {
+              scatterPlot==="Good Bearing" ? <GoodScatter/> : scatterPlot === "Fault Bearing" ? <FaultScatter/> : <RubbingScatter/>
+            }
           </div>
         </Box>
         <Box

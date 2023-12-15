@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Scatter } from '@ant-design/charts';
 
-const ScatterPlot = ({...props}) => {
+const GoodScatter = ({ type }) => {
 
-    const [data,setData] = useState([]);
+  // console.log(type)
+
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     asyncFetch();
-  },[])
+  }, [])
   const asyncFetch = () => {
-    fetch('https://raw.githubusercontent.com/Rahuldmc/VibrationData/main/faultssample.json')
+    fetch('https://raw.githubusercontent.com/Rahuldmc/VibrationData/main/output.json')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => {
@@ -25,10 +27,10 @@ const ScatterPlot = ({...props}) => {
     // colorField: 'Genre',
     size: 1,
     pointStyle: {
-    fill: 'red',  
-    r: 1,
-    stroke:'red',         
-  },
+      fill: 'rgba(75,192,192,1)',
+      r: 1,
+      stroke: 'rgba(75,192,192,1)',
+    },
     yAxis: {
       nice: true,
       line: {
@@ -46,7 +48,7 @@ const ScatterPlot = ({...props}) => {
           },
         },
       },
-      nice:true,
+      nice: true,
       line: {
         style: {
           stroke: '#bbb',
@@ -58,9 +60,9 @@ const ScatterPlot = ({...props}) => {
 
   return (
     <div>
-        <Scatter {...config}/>
+      <Scatter style={{ height: '280px', width: '450px' }} {...config} />
     </div>
   )
 }
 
-export default ScatterPlot
+export default GoodScatter;
