@@ -1,14 +1,12 @@
-import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import TrafficIcon from "@mui/icons-material/Traffic";
+
 import Header from "../../components/Header";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
-import StatBox from "../../components/StatBox";
-import ProgressCircle from "../../components/ProgressCircle";
+
 import engine from '../../images/engine1.png';
 import wheel from '../../images/wheel.png';
 import brake from '../../images/brake.png';
@@ -20,6 +18,7 @@ import ProgressBar2 from "../bar/Progressbar2";
 import ProgressBar3 from "../bar/Progressbar3";
 import ProgressBar4 from "../bar/Progressbar4";
 import { useEffect, useState } from "react";
+
 import LineChart from "../../components/LineChart";
 import data from '../../data/timeData';
 import {time} from '../../data/scatterData'
@@ -28,11 +27,11 @@ import ScatterChart from "../../components/ScatterChart";
 const Dashboard = () => {
 
   const config = {
-    labels: data.map((data) => data.time),
+    labels: dataList.map((data) => data.time),
     datasets: [
       {
         label: "Hertz",
-        data: data.map((data) => data.goodBearing),
+        data: dataList.map((data) => data.value),
         backgroundColor: [
           "rgba(75,192,192,1)",
         ],
@@ -54,42 +53,6 @@ const Dashboard = () => {
       },
     }
   };
-
-  // const [data, setData] = useState([]);
-  // setData(time);
-  // console.log(data)
-
-  // useEffect(() => {
-  //   asyncFetch();
-  // }, []);
-
-  // const asyncFetch = () => {
-  //   fetch(time)
-  //     .then((response) => response.json())
-  //     .then((json) => setData(json))
-  //     .catch((error) => {
-  //       console.log('fetch data failed', error);
-  //     });
-  // };
-
-  const configPie={
-    type: 'scatter',
-    datasets: [
-      {label : 'Scatter plot',
-    data: time,
-    backgroundColor:'rgba(75, 192, 192, 1)',
-    pointRadius:3
-  }
-    ],
-    options: {
-      scales: {
-        x: {
-          type: 'linear',
-          position: 'bottom'
-        }
-      }
-    }
-  }
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -317,7 +280,7 @@ const Dashboard = () => {
           p="30px"
         >
           <Typography variant="h5" fontWeight="600">
-            Campaign
+            Good Bearing
           </Typography>
           {/* <Box
             display="flex"
@@ -335,9 +298,8 @@ const Dashboard = () => {
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box> */}
-          <div className="plot-contaianer">
-            {/* <LineChart chartData={config} style={{ width: 300 ,height:500}} /> */}
-            <ScatterChart chartData={configPie}/>
+          <div style={{ marginTop : '50px'}}>
+            <LineChart chartData={config} style={{ width: 300 ,height:500}} />
           </div>
         </Box>
         <Box

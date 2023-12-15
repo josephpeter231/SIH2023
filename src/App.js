@@ -9,6 +9,7 @@ import Secondpage from './scenes/Intro/Luxury';
 const App = () => {
     return (  
         <Routes>
+             
               <Route path="/" element={<Intro />} />
               <Route path="/Vehicletype" element={<Secondpage />} />
               <Route path="/Dashboard" element={<Home />} />
