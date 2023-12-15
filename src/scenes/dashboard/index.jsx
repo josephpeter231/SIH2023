@@ -1,14 +1,12 @@
-import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import TrafficIcon from "@mui/icons-material/Traffic";
+
 import Header from "../../components/Header";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
-import StatBox from "../../components/StatBox";
-import ProgressCircle from "../../components/ProgressCircle";
+
 import engine from '../../images/engine1.png';
 import wheel from '../../images/wheel.png';
 import brake from '../../images/brake.png';
@@ -20,11 +18,9 @@ import ProgressBar2 from "../bar/Progressbar2";
 import ProgressBar3 from "../bar/Progressbar3";
 import ProgressBar4 from "../bar/Progressbar4";
 import { useEffect, useState } from "react";
-import LineCharts from "../../components/LineChart";
+
 import LineChart from "../../components/LineChart";
 import dataList from '../../data/timeData';
-import LiveTimeSeriesChart from '../../components/TimeSeries';
-import ScatterCHart from "../../components/ScatterCHart";
 
 const Dashboard = () => {
 
