@@ -1,23 +1,19 @@
-import { Scatter } from '@ant-design/plots'
-import React, { useEffect, useState } from 'react'
+import { Scatter } from '@ant-design/plots';
+import React, { useEffect, useState } from 'react';
+import dataList from '../data/goodBearing'; 
+import _ from 'lodash'
 
 const GoodScatter = ({ type }) => {
 
   // console.log(type)
 
   const [data, setData] = useState([]);
-
+  const [good, setGood] =  useState([]);
   useEffect(() => {
-    asyncFetch();
-  }, [])
-  const asyncFetch = () => {
-    fetch('https://raw.githubusercontent.com/Rahuldmc/VibrationData/main/output.json')
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => {
-        console.log('fetch data failed', error);
-      });
-  };
+    setData(dataList);
+  }, []);
+  
+
   const config = {
     appendPadding: 10,
     data,
@@ -27,9 +23,9 @@ const GoodScatter = ({ type }) => {
     // colorField: 'Genre',
     size: 1,
     pointStyle: {
-      fill: 'rgba(75,192,192,1)',
+      fill: '#4cceac',
       r: 1,
-      stroke: 'rgba(75,192,192,1)',
+      stroke: '#4cceac',
     },
     yAxis: {
       nice: true,
@@ -59,7 +55,7 @@ const GoodScatter = ({ type }) => {
 
   return (
     <div>
-      <Scatter style={{ height: '280px', width: '450px' }} {...config} />
+      <Scatter style={{ height: '500px', width: '900px' }} {...config} />
     </div>
   )
 }

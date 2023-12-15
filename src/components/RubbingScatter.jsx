@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Scatter } from '@ant-design/charts';
+import rubbing from '../data/rubbing';
 
 const RubbingScatter = ({ type }) => {
 
     // console.log(type)
 
     const [data, setData] = useState([]);
-
     useEffect(() => {
-        asyncFetch();
-    }, [])
-    const asyncFetch = () => {
-        fetch('https://raw.githubusercontent.com/Rahuldmc/VibrationData/main/rubbingsample.json')
-            .then((response) => response.json())
-            .then((json) => setData(json))
-            .catch((error) => {
-                console.log('fetch data failed', error);
-            });
-    };
+      setData(rubbing);
+    }, []);
+    
     const config = {
         appendPadding: 2,
         data,
@@ -60,7 +53,7 @@ const RubbingScatter = ({ type }) => {
 
     return (
         <div>
-            <Scatter style={{ height: '280px', width: '450px' }} {...config} />
+            <Scatter style={{ height: '500px', width: '900px' }} {...config} />
         </div>
     )
 }

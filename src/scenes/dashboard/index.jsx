@@ -129,9 +129,9 @@ const Dashboard = React.memo(() => {
         label: "Hertz",
         data: timeSeries === 'Good Bearing'? goodBearingData.map((data) => data.value) : timeSeries==="Fault Bearing" ? faultBearingData.map((data) => data.value) : rubbingData.map((data) => data.value),
         backgroundColor: [
-          "rgba(75,192,192,1)",
+          "#4cceac",
         ],
-        borderColor: "rgba(75,192,192,1)",
+        borderColor: "#4cceac",
         borderWidth: 2,
         pointStyle: 'circle',
         pointRadius: 0,
@@ -158,9 +158,9 @@ const Dashboard = React.memo(() => {
         label: "Hertz",
         data: fft === 'Good Bearing'? fftGoodBearingData.map((data) => data.value) : fft === "Fault Bearing" ? fftFaultBearingData.map((data) => data.value) : fftRrubbingData.map((data) => data.value),
         backgroundColor: [
-          "rgba(75,192,192,1)",
+          "#4cceac",
         ],
-        borderColor: "rgba(75,192,192,1)",
+        borderColor: "#4cceac",
         borderWidth: 2,
         pointStyle: 'circle',
         pointRadius: 0,
@@ -403,8 +403,8 @@ const Dashboard = React.memo(() => {
 
         {/* ROW 3 */}
         <Box
-          gridColumn="span 6"
-          gridRow="span 2"
+          gridColumn="span 12"
+          gridRow="span 3"
           backgroundColor={colors.primary[400]}
           p="30px"
         >
@@ -426,7 +426,7 @@ const Dashboard = React.memo(() => {
               <MenuItem value="Rubbing">Rubbing</MenuItem>
             </Select>
           </FormControl>
-          <div style={{ marginTop: '20px' }}>
+          <div style={{ marginTop: '10px' }}>
             <LineChart chartData={config} style={{ width: 300, height: 500 }} />
           </div>
         </Box>
@@ -466,6 +466,34 @@ const Dashboard = React.memo(() => {
         >
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Typography variant="h5" fontWeight="600">
+              Recurrence
+            </Typography>
+            <Select
+              value={timeSeries}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+              sx={{ marginTop: '1rem' }}
+            >
+              <MenuItem value="Good Bearing">
+                Good Bearing
+              </MenuItem>
+              <MenuItem value="Fault Bearing">Fault Bearing</MenuItem>
+              <MenuItem value="Rubbing">Rubbing</MenuItem>
+            </Select>
+          </FormControl>
+          <div style={{ marginTop: '20px' }}>
+            <LineChart chartData={config} style={{ width: 300, height: 500 }} />
+          </div>
+        </Box>
+        <Box
+          gridColumn="span 12"
+          gridRow="span 3"
+          backgroundColor={colors.primary[400]}
+          p="30px"
+        >
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <Typography variant="h5" fontWeight="600">
               Scatter Plot
             </Typography>
             <Select
@@ -486,34 +514,6 @@ const Dashboard = React.memo(() => {
             {
               scatterPlot==="Good Bearing" ? <GoodScatter/> : scatterPlot === "Fault Bearing" ? <FaultScatter/> : <RubbingScatter/>
             }
-          </div>
-        </Box>
-        <Box
-          gridColumn="span 6"
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-          p="30px"
-        >
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <Typography variant="h5" fontWeight="600">
-              Recurrence
-            </Typography>
-            <Select
-              value={timeSeries}
-              onChange={handleChange}
-              displayEmpty
-              inputProps={{ 'aria-label': 'Without label' }}
-              sx={{ marginTop: '1rem' }}
-            >
-              <MenuItem value="Good Bearing">
-                Good Bearing
-              </MenuItem>
-              <MenuItem value="Fault Bearing">Fault Bearing</MenuItem>
-              <MenuItem value="Rubbing">Rubbing</MenuItem>
-            </Select>
-          </FormControl>
-          <div style={{ marginTop: '20px' }}>
-            <LineChart chartData={config} style={{ width: 300, height: 500 }} />
           </div>
         </Box>
       </Box>
