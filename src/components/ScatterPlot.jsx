@@ -1,5 +1,5 @@
+import { Scatter } from '@ant-design/plots'
 import React, { useEffect, useState } from 'react'
-import { Scatter } from '@ant-design/charts';
 
 const GoodScatter = ({ type }) => {
 
@@ -12,6 +12,7 @@ const GoodScatter = ({ type }) => {
   }, [])
   const asyncFetch = () => {
     fetch('https://raw.githubusercontent.com/Rahuldmc/VibrationData/main/output.json')
+    fetch('https://raw.githubusercontent.com/Rahuldmc/VibrationData/main/output.json')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => {
@@ -19,7 +20,7 @@ const GoodScatter = ({ type }) => {
       });
   };
   const config = {
-    appendPadding: 2,
+    appendPadding: 10,
     data,
     xField: 'time',
     yField: 'value',
@@ -51,12 +52,11 @@ const GoodScatter = ({ type }) => {
       nice: true,
       line: {
         style: {
-          stroke: '#bbb',
+          stroke: '#aaa',
         },
       },
     },
   };
-
 
   return (
     <div>
