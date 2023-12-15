@@ -12,7 +12,6 @@ const GoodScatter = ({ type }) => {
   }, [])
   const asyncFetch = () => {
     fetch('https://raw.githubusercontent.com/Rahuldmc/VibrationData/main/output.json')
-    fetch('https://raw.githubusercontent.com/Rahuldmc/VibrationData/main/output.json')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => {
