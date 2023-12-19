@@ -226,7 +226,8 @@ const Dashboard = React.memo(() => {
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
+            <a href="https://drive.google.com/drive/u/2/my-drive">Download Reports</a>
+             
           </Button>
         </Box>
       </Box>
