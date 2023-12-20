@@ -123,11 +123,11 @@ const Dashboard = React.memo(() => {
     setfftRubbingData(downsampled);
   }, []);
   const config = {
-    labels: timeSeries === 'Good Bearing'? goodBearingData.map((data) => data.time) : timeSeries==="Fault Bearing" ? faultBearingData.map((data) => data.time) : rubbingData.map((data) => data.time),
+    labels: timeSeries === 'Good Bearing' ? goodBearingData.map((data) => data.time) : timeSeries === "Fault Bearing" ? faultBearingData.map((data) => data.time) : rubbingData.map((data) => data.time),
     datasets: [
       {
         label: "Hertz",
-        data: timeSeries === 'Good Bearing'? goodBearingData.map((data) => data.value) : timeSeries==="Fault Bearing" ? faultBearingData.map((data) => data.value) : rubbingData.map((data) => data.value),
+        data: timeSeries === 'Good Bearing' ? goodBearingData.map((data) => data.value) : timeSeries === "Fault Bearing" ? faultBearingData.map((data) => data.value) : rubbingData.map((data) => data.value),
         backgroundColor: [
           "#4cceac",
         ],
@@ -150,13 +150,13 @@ const Dashboard = React.memo(() => {
     }
   };
 
-  
+
   const configFft = {
-    labels: fft === 'Good Bearing'? fftGoodBearingData.map((data) => data.time) : fft === "Fault Bearing" ? fftFaultBearingData.map((data) => data.time) : fftRrubbingData.map((data) => data.time),
+    labels: fft === 'Good Bearing' ? fftGoodBearingData.map((data) => data.time) : fft === "Fault Bearing" ? fftFaultBearingData.map((data) => data.time) : fftRrubbingData.map((data) => data.time),
     datasets: [
       {
         label: "Hertz",
-        data: fft === 'Good Bearing'? fftGoodBearingData.map((data) => data.value) : fft === "Fault Bearing" ? fftFaultBearingData.map((data) => data.value) : fftRrubbingData.map((data) => data.value),
+        data: fft === 'Good Bearing' ? fftGoodBearingData.map((data) => data.value) : fft === "Fault Bearing" ? fftFaultBearingData.map((data) => data.value) : fftRrubbingData.map((data) => data.value),
         backgroundColor: [
           "#4cceac",
         ],
@@ -192,7 +192,7 @@ const Dashboard = React.memo(() => {
     const [animatedValue, setAnimatedValue] = useState(0);
 
     useEffect(() => {
-      const step = (value - animatedValue) / 20; // Adjust the step for smoother animation
+      const step = (value - animatedValue) / 20;
 
       const interval = setInterval(() => {
         if (Math.abs(animatedValue - value) > Math.abs(step)) {
@@ -201,12 +201,12 @@ const Dashboard = React.memo(() => {
           setAnimatedValue(value);
           clearInterval(interval);
         }
-      }, 30); // Adjust the interval for the animation speed
+      }, 30);
 
       return () => clearInterval(interval);
     }, [animatedValue, value]);
 
-    return <span>{animatedValue.toFixed(2)}</span>; // Adjust the number of decimal places
+    return <span>{animatedValue.toFixed(2)}</span>;
   };
 
   return (
@@ -214,21 +214,6 @@ const Dashboard = React.memo(() => {
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Predictive Maintenance Analysis" subtitle="Know your vehicle health" />
-
-        <Box>
-          <Button
-            sx={{
-              backgroundColor: colors.blueAccent[700],
-              color: colors.grey[100],
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-            }}
-          >
-            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
-          </Button>
-        </Box>
       </Box>
 
       {/* GRID & CHARTS */}
@@ -253,7 +238,6 @@ const Dashboard = React.memo(() => {
               alt="Your Alt Text"
               className="hover-image"
             />
-
             <div className="progress text-center"><ProgressBar1 /></div>
             <div className="text-center image-text">Engine</div>
           </div>
@@ -312,25 +296,6 @@ const Dashboard = React.memo(() => {
             <div className="text-center image-text">Break</div>
           </div>
         </Box>
-        {/* <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          className="hover-container"
-        >
-          <div className="hover-container images-div">
-            <img
-              src={clutch}
-              alt="Your Alt Text"
-              className="hover-image"
-            />
-            <div className="progress text-center"><ProgressBar4 /></div>
-            <div className="text-center image-text">Transmission</div>
-          </div>
-        </Box> */}
-        {/* ROW 2 */}
         <Box
           gridColumn="span 8"
           gridRow="span 2"
@@ -510,9 +475,9 @@ const Dashboard = React.memo(() => {
               <MenuItem value="Rubbing">Rubbing</MenuItem>
             </Select>
           </FormControl>
-          <div style={{display:'flex',justifyContent:'center',alignItems:'center', marginTop: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
             {
-              scatterPlot==="Good Bearing" ? <GoodScatter/> : scatterPlot === "Fault Bearing" ? <FaultScatter/> : <RubbingScatter/>
+              scatterPlot === "Good Bearing" ? <GoodScatter /> : scatterPlot === "Fault Bearing" ? <FaultScatter /> : <RubbingScatter />
             }
           </div>
         </Box>

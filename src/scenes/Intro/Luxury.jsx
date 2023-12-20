@@ -5,7 +5,7 @@ const Luxury = () => {
   return (
     <div className={styles.luxury}>
       <div className={styles.heading}>
-        <h2>Vehicle Selection</h2>
+        <h2 className={styles.text_white}>Vehicle Selection</h2>
         <div className={styles.text_bg}>
           <p>
             <span>Select  the top luxury vehicles to roll in style</span>
@@ -43,9 +43,6 @@ const Luxury = () => {
             <h3>Electric Vehicles</h3>
           </div>
         </div>
-
-        
-
       </div>
     </div>
   );

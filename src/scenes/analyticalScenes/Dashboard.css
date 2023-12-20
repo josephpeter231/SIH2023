@@ -1,0 +1,58 @@
+.home {
+    height: 92vh;
+    overflow: scroll;
+}
+
+.home::-webkit-scrollbar {
+    display: none;
+}
+
+.hover-container {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.images-div {
+    position: relative;
+    text-align: center;
+}
+
+.hover-image {
+    width: 35%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover-container:hover .hover-image {
+    transform: scale(1.2);
+}
+
+.text-center {
+    position: absolute;
+    margin-left: 20px;
+}
+
+.image-text {
+    margin-top: 10px;
+    font-size: medium;
+    font-weight: 600;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress {
+    position: relative;
+    margin-top: 5px;
+}
+
+.plot-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+}

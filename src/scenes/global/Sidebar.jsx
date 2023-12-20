@@ -22,37 +22,52 @@ import { DownOutlined } from "@ant-design/icons";
 import { Tree } from "antd";
 import './sidebar.css';
 import { DescriptionOutlined, LocalActivityOutlined, LocalHospitalOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import Engine from "../analyticalScenes/CrankshaftBearing1";
+
+const homeData = [
+  {
+    title: "Home",
+    key: "0-0",
+    children: [
+      {
+        title: "Home Dashboard",
+        key: "0-0-0",
+      },
+    ],
+  },
+];
 
 const engineData = [
   {
     title: "Engine",
-    key: "0-0",
+    key: "0-1",
     children: [
       {
         title: "Crankshaft",
-        key: "0-0-0",
+        key: "0-1-0",
         children: [
           {
             title: "Bearing-1",
-            key: "0-0-0-0",
+            key: "0-1-0-0",
           },
           {
             title: "Bearing-2",
-            key: "0-0-0-1",
+            key: "0-1-0-1",
           },
         ],
       },
       {
         title: "Camshaft",
-        key: "0-0-1",
+        key: "0-1-1",
         children: [
           {
             title: "Bearing-1",
-            key: "0-0-1-0",
+            key: "0-1-1-0",
           },
           {
             title: "Bearing-2",
-            key: "0-0-1-0",
+            key: "0-1-1-1",
           },
         ],
       },
@@ -60,31 +75,31 @@ const engineData = [
   },
 ];
 
-
 const wheelData = [
   {
     title: "Transmission",
-    key: "0-0",
+    key: "0-2",
     children: [
       {
         title: "Clutch",
-        key: "0-0-0",
+        key: "0-2-0",
       },
       {
         title: "Gear Box",
-        key: "0-0-1",
+        key: "0-2-1",
       },
       {
         title: "Propeller Shaft",
-        key: "0-0-2",
+        key: "0-2-2",
       },
       {
         title: "Differential Gears",
-        key: "0-0-3",
+        key: "0-2-3",
       },
     ],
   },
 ];
+
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -107,8 +122,10 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 
 const Sidebar = () => {
   // TREE STRUCTURE
+  const navigate = useNavigate();
   const onSelect = (selectedKeys, info) => {
-    console.log("selected", selectedKeys, info);
+    console.log("selected", selectedKeys[0]);
+    (selectedKeys[0] === "0-0-0") ? navigate('/Dashboard') : selectedKeys[0] === '0-1-0-1' ? navigate('/CrankshaftBearing2') : navigate('/CrankshaftBearing1');
   };
 
 
@@ -193,7 +210,18 @@ const Sidebar = () => {
               </Typography>
             </Box>
           </Box>
-          <div style={{ display: 'flex', margin : '20px', marginTop : '50px', flexDirection: 'column', backgroundColor : '#141b2d', borderRadius : 20 }}>
+          <div style={{ display: 'flex', margin: '20px', marginTop: '50px', flexDirection: 'column', backgroundColor: '#141b2d', borderRadius: 20 }}>
+            <Box className="tree-container" style={{ margin: 0, padding: 0 }}>
+              <Tree
+                className={!isCollapsed ? 'tree' : 'tree hidden'}
+                showLine
+                switcherIcon={<LocalHospitalIcon />}
+                defaultExpandedKeys={['0-0-0']}
+                onSelect={onSelect}
+                treeData={homeData}
+                style={{ margin: 0, padding: 0 }}
+              />
+            </Box>
             <Box className="tree-container" style={{ margin: 0, padding: 0 }}>
               <Tree
                 className={!isCollapsed ? 'tree' : 'tree hidden'}

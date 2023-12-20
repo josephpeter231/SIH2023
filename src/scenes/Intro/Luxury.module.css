@@ -7,7 +7,7 @@
 .heading h2{
     font-size: 4rem;
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .heading p{
@@ -32,7 +32,7 @@
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-
+    border-radius: 20px;
     left: 0;
     right: 0;
 }
