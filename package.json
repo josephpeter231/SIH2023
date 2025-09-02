@@ -30,7 +30,7 @@
     "dagre-compound": "^0.0.13",
     "formik": "^2.2.9",
     "inversify": "^6.0.2",
-    "jspdf": "^3.0.1",
+    "jspdf": "^3.0.2",
     "jspdf-autotable": "^5.0.2",
     "lodash": "^4.17.21",
     "powerbi-client": "^2.22.3",
